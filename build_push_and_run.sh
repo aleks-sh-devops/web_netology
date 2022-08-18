@@ -2,15 +2,15 @@
 
 # Создать образ на основании Dockerfile:
 docker build ${PWD} \
- -t 12aleks211/web_netology:0.0.1 \
- -t 12aleks211/web_netology:latest
+ -t aleksshdevops/web_netology:0.0.1 \
+ -t aleksshdevops/web_netology:latest
 
 #Запускаем собранный контейнер + пробрасываем тома:
 docker container run -d \
  -p 80:80 \
  -v ${PWD}/nginx/html:/usr/share/nginx/html \
  --restart on-failure \
- 12aleks211/webservice:0.0.1
+ aleksshdevops/web_netology:0.0.1
 
 docker container ps -a
 sleep 3
@@ -22,7 +22,7 @@ read VAR_PUSH_DH
 
 if [[ $VAR_PUSH_DH = 'y' ]]
 then
-  docker image push --all-tags 12aleks211/web_netology
+  docker image push --all-tags aleksshdevops/web_netology
 elif [[  $VAR_PUSH_DH = 'n' ]]
 then
   echo "Skip pushing.."
